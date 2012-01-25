@@ -88,7 +88,7 @@ class Nsm_gravatar{
         }
 
         $query_params = array();
-        foreach ($options as $key => $query_param) {
+        foreach ($this->options as $key => $query_param) {
             $val = $EE->TMPL->fetch_param($key, $EE->config->item($key, 'nsm_gravatar'));
             if(false !== $val) {
                 $query_params[$query_param] = ("d" == $key) ? urlencode($val) : $val;
@@ -96,6 +96,7 @@ class Nsm_gravatar{
         }
 
         $gravatar_url = ("yes" == $secure) ? "https://secure.gravatar.com/": "http://www.gravatar.com/";
+		$gravatar_url .= 'avatar/';
         $gravatar_url .= md5(strtolower($email)) . "?";
         $gravatar_url .= http_build_query($query_params);
 
