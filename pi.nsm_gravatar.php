@@ -55,8 +55,9 @@ class Nsm_gravatar{
         $username = $EE->TMPL->fetch_param('username');
         $member_id = $EE->TMPL->fetch_param('member_id');
 
-
-        if (false === isset($_SERVER['HTTPS']) || "on" == $_SERVER['HTTPS']) { 
+		$secure = false;
+		
+        if (isset($_SERVER['HTTPS']) && "on" == $_SERVER['HTTPS']) { 
              $secure = "yes";
         }
         $secure = $EE->TMPL->fetch_param('secure', $secure);
