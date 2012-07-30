@@ -99,7 +99,7 @@ class Nsm_gravatar{
         $gravatar_url = ("yes" == $secure) ? "https://secure.gravatar.com/": "http://www.gravatar.com/";
 		$gravatar_url .= 'avatar/';
         $gravatar_url .= md5(strtolower($email)) . "?";
-        $gravatar_url .= http_build_query($query_params);
+        $gravatar_url .= http_build_query($query_params, '', '&amp;');
 
         $this->return_data = $gravatar_url;
 	}
